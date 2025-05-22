@@ -16,6 +16,7 @@ import development from "../public/img/development.png";
 import testing from "../public/img/testing.png";
 import deployment from "../public/img/deployment.png";
 import maintenance from "../public/img/maintenance.png";
+import { AnimatePresence } from "framer-motion";
 
 // Define the steps array
 const steps = [
@@ -51,58 +52,49 @@ function StepCard({ step, index }: { step: { icon: any; title: string; descripti
   const hoverHeight = windowWidth < 640 ? "4.5rem" : "6rem"; // h-18 on mobile, h-24 on larger screens
 
   return (
-    <motion.div
+      <motion.div
       className="flex flex-col items-center text-center relative cursor-pointer"
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: "easeInOut" }}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
     >
-      {/* Icon Container (Transforms to Rectangle on Hover) */}
-      <motion.div
-        className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-20 lg:h-20 bg-gray-800 border-4 border-green-500 rounded-full flex items-center justify-center overflow-hidden"
-        whileHover={{
-          width: hoverWidth, // Dynamically set based on window width
-          height: hoverHeight, // Dynamically set based on window width
-          borderRadius: "0.5rem", // rounded-lg
-          backgroundColor: "rgba(16, 185, 129, 0.8)", // bg-green-500/80
-          borderColor: "transparent", // Remove border on hover
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-      >
-        {/* Conditional Rendering: Show Icon or Description */}
-        {!isHovering ? (
+      {/* Tooltip Description Above Icon */}
+      <AnimatePresence>
+        {isHovering && (
           <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: isHovering ? 0 : 1 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-          >
-            <Image
-              src={step.icon}
-              alt={step.title}
-              width={40}
-              height={40}
-              className="filter grayscale invert transition-all duration-300"
-            />
-          </motion.div>
-        ) : (
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center text-white text-sm sm:text-base font-medium p-1 sm:p-2 text-center leading-tight"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHovering ? 1 : 0 }}
-            transition={{ duration: 0.2, delay: 0.1, ease: "easeInOut" }}
+            className="absolute top-3 left-1 -translate-x-1/2 bg-green-600 text-white text-xs sm:text-sm font-medium px-3 py-2 rounded-lg shadow-lg z-20 w-44 sm:w-56 pointer-events-none"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
           >
             {step.description}
           </motion.div>
         )}
+      </AnimatePresence>
+
+        {/* Conditional Rendering: Show Icon or Description */}
+          {/* Icon Container */}
+      <motion.div
+        className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-20 lg:h-20 bg-gray-800 border-4 border-green-500 rounded-full flex items-center justify-center overflow-hidden transition-all duration-300"
+        animate={isHovering ? { scale: 1.08, borderColor: "#22c55e" } : { scale: 1, borderColor: "#22c55e" }}
+      >
+        <Image
+          src={step.icon}
+          alt={step.title}
+          width={40}
+          height={40}
+          className="filter grayscale invert transition-all duration-300"
+        />
       </motion.div>
 
       {/* Step Title */}
       <p className="mt-4 text-xs sm:text-sm font-medium text-white">{step.title}</p>
     </motion.div>
+      
   );
 }
 

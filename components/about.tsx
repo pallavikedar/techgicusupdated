@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef } from "react";
@@ -23,20 +22,6 @@ const About = () => {
   return (
     <>
       {/* SEO Meta Tags */}
-      <Head>
-        <title>About TT TechGicus - Our Vision and Mission</title>
-        <meta
-          name="description"
-          content="Learn about TT TechGicus, a leading web and mobile app development company. Discover our vision, mission, and innovative tech solutions."
-        />
-        <meta
-          name="keywords"
-          content="about TT TechGicus, web development, mobile app development, tech solutions, innovation, vision, mission"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
 
       <section
         id="about"
@@ -52,51 +37,39 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-12 items-center">
             {/* Image Section (Left Side) */}
-            <motion.div
-              style={{ y, opacity }}
-              className="w-full lg:w-1/2 relative"
-            >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.5, delay: 0.3, ease: "easeInOut" }}
-                className="relative h-[300px] sm:h-[400px] lg:h-[500px] w-full rounded-lg overflow-hidden border-none"
-                style={{
-                  position: "relative",
-                }}
-              >
-                {/* Top-Left Corner Border (Vertical and Horizontal) */}
-                <div
-                  className="absolute top-0 left-0 w-1/2 h-[150px] sm:h-[200px] lg:h-[250px] border-t-4 border-l-4 border-green-500 rounded-tl-lg z-10 transition-all duration-300"
-                  style={{ borderRight: "none", borderBottom: "none" }}
-                ></div>
-                <div
-                  className="absolute top-0 left-0 w-1/2 h-1 border-t-4 border-green-500 rounded-tl-lg z-20 transition-all duration-300 group-hover:w-3/4"
-                  style={{ borderLeft: "none", borderBottom: "none" }}
-                ></div>
-
-                {/* Bottom-Right Corner Border (Vertical and Horizontal) */}
-                <div
-                  className="absolute bottom-0 right-0 w-1/2 h-[150px] sm:h-[200px] lg:h-[250px] border-b-4 border-r-4 border-green-500 rounded-br-lg z-10 transition-all duration-300"
-                  style={{ borderTop: "none", borderLeft: "none" }}
-                ></div>
-                <div
-                  className="absolute bottom-0 right-0 w-1/2 h-1 border-b-4 border-green-500 rounded-br-lg z-20 transition-all duration-300 group-hover:w-3/4"
-                  style={{ borderRight: "none", borderTop: "none" }}
-                ></div>
-
-                <Image
-                  src={about}
-                  alt="About Techgicus"
-                  fill
-                  className="object-cover brightness-75 rounded-lg"
-                />
-                {/* Subtle Green Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-transparent z-10 rounded-lg"></div>
-              </motion.div>
-
-              <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 w-48 sm:w-64 h-48 sm:h-64 bg-green-500/10 rounded-full blur-2xl"></div>
-            </motion.div>
+            <div className="w-full lg:w-1/2 relative flex justify-center items-center">
+  <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] max-w-xl group">
+    {/* Static Border */}
+    <div className="absolute inset-0 rounded-2xl border-4 border-green-500 pointer-events-none z-10" />
+    {/* Top-Left Corner Border (Vertical and Horizontal) */}
+    <div
+      className="absolute top-0 left-0 w-1/2 h-[150px] sm:h-[200px] lg:h-[250px] border-t-4 border-l-4 border-green-500 rounded-tl-lg z-10 transition-all duration-300"
+      style={{ borderRight: "none", borderBottom: "none" }}
+    ></div>
+    <div
+      className="absolute top-0 left-0 w-1/2 h-1 border-t-4 border-green-500 rounded-tl-lg z-20 transition-all duration-300"
+      style={{ borderLeft: "none", borderBottom: "none" }}
+    ></div>
+    {/* Bottom-Right Corner Border (Vertical and Horizontal) */}
+    <div
+      className="absolute bottom-0 right-0 w-1/2 h-[150px] sm:h-[200px] lg:h-[250px] border-b-4 border-r-4 border-green-500 rounded-br-lg z-10 transition-all duration-300"
+      style={{ borderTop: "none", borderLeft: "none" }}
+    ></div>
+    <div
+      className="absolute bottom-0 right-0 w-1/2 h-1 border-b-4 border-green-500 rounded-br-lg z-20 transition-all duration-300"
+      style={{ borderRight: "none", borderTop: "none" }}
+    ></div>
+    <Image
+      src={about}
+      alt="About Techgicus"
+      fill
+      className="object-cover rounded-2xl brightness-80 shadow-xl"
+      priority
+    />
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-tr from-green-500/10 to-transparent rounded-2xl z-10 pointer-events-none"></div>
+  </div>
+</div>
 
             {/* Content + Number Counter Section (Right Side) */}
             <motion.div
@@ -104,7 +77,7 @@ const About = () => {
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ staggerChildren: 0.3, delayChildren: 0.5 }}
-              className="w-full lg:w-1/2 group"
+              className="w-full lg:w-1/2 top-9  group"
             >
               <motion.div
                 variants={{
@@ -118,10 +91,10 @@ const About = () => {
                   About <span className="text-[#3CD070]">Techgicus</span>
                 </h2> */}
 
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                <h2 className="text-3xl  md:text-4xl font-bold mb-6">
                   About <span className="text-[#3CD070]">Techgicus</span>
                 </h2>
-                <div className="w-16 sm:w-20 h-1 bg-green-400 mb-6 sm:mb-8"></div>
+                <div className="w-16  sm:w-20 h-1 bg-green-400 mb-6 sm:mb-8"></div>
 
                 <p className="text-gray-300 mb-4 sm:mb-6 text-base sm:text-lg text-justify">
                   Techgicus is a reliable Web and Mobile App Development Company
@@ -194,8 +167,6 @@ const About = () => {
                     </h3>
                   </motion.div>
                 </motion.div>
-
-                
 
                 <motion.button
                   initial={{ opacity: 0 }}

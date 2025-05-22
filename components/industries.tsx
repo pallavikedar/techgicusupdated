@@ -54,7 +54,7 @@ const Industries = () => {
         </motion.h2>
 
         <div className="w-20 h-1 bg-[#50FA7B] mx-auto mb-8"></div>
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-center">
           {industries.map((industry, index) => (
             <motion.div
               key={index}

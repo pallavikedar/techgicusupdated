@@ -109,7 +109,7 @@ export default function Technologies() {
             <h3 className="text-xl font-semibold text-green-500 mb-8 uppercase tracking-wide">
               {tech.category}
             </h3>
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 justify-center">
               {tech.items.map((item, idx) => {
                 const IconComponent = item.icon;
                 return (
