@@ -156,14 +156,15 @@ const Navbar = () => {
     >
       <div className="container mx-auto  sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="inline-block w-25 ">
-          <Image
-            src={Logo}
-            alt="Techgicus Logo"
-            className="w-25 h-auto rounded-xl object-contain"
-            priority
-          />
-        </Link>
+        <Link href="/" className="inline-block">
+  <Image
+    src={Logo}
+    alt="Techgicus Logo"
+    // Responsive width: 40px (w-10) on mobile, 100px (w-25) on md and up
+    className="w-40 h-auto rounded-xl object-contain md:w-52 transition-all duration-300"
+    priority
+  />
+</Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-6 lg:space-x-10">

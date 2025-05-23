@@ -80,7 +80,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
+        <div className="flex flex-row xs:flex-row xs:justify-center xs:items-start xs:space-x-8 md:flex-col md:space-x-0 col-span-1 xs:col-span-2 md:col-span-1"></div>
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-bold mb-6">Services</h3>
             <ul className="space-y-3">
@@ -172,6 +172,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+  </div>
 
           {/* <div>
             <h3 className="text-lg font-bold mb-6">Newsletter</h3>
@@ -194,7 +195,7 @@ const Footer = () => {
               </div>
             </form>
           </div> */}
-        </div>
+       
 
         <div className="py-6 border-t border-gray-800 flex flex-col md:flex-row justify-center md:justify-between items-center text-center">
           <p className="text-gray-400 text-sm">
@@ -222,7 +223,8 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-      </div>
+        </div>
+     
 
       <motion.button
         onClick={scrollToTop}
